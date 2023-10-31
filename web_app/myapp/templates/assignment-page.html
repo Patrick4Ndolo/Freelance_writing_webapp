@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title%}
+    Asignment Page
+{% endblock title %}
+{% block content %}
+    <div class="row" style="margin-top: 20px; margin-left: 20px;">
+        <div class="col-9">
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Word_count</th>
+                    <th scope="col">Assignment_type</th>
+                    <th scope="col">Academic_level</th>
+                    <th scope="col">Date_posted</th>
+                    <th scope="col">Upload_file</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in posts %}
+                {% include 'includes/post_assignment_modal.html' %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.subject }}</td>
+                        <td>{{ item.word_count }}</td>
+                        <td>{{ item.assignment_type }}</td>
+                        <td>{{ item.academic_level }}</td>
+                        <td>{{ item.date_posted.strftime('%Y-%m-%d') }}</td>
+                        <td>{{ item.upload_file }}</td>
+                        <td>{{ item.deadline }}</td>
+                        <td>
+                            <button class="btn btn-outline btn-info" data-bs-toggle="modal" data-bs-target="#Modal-MoreInfo-{{ item.id }}" >More Info</button>
+                            <button class="btn btn-outline btn-success" data-bs-toggle="modal" data-bs-target="#Modal-UpdateConfirm-{{ item.id }}" >Edit</button>
+                            <button class="btn btn-outline btn-danger" data-bs-toggle="modal" data-bs-target="#Modal-DeleteConfirm-{{ item.id }}">Delete</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+    
+        <style>
+            body {
+                background-color: #212121;
+                color: white;
+            }
+        </style>
+        </div>
+    </div>
+{% endblock content %}
