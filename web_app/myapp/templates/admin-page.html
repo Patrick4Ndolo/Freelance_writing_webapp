@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% block title %}
+    Admin Page
+{% endblock title %}
+
+{% block content %}
+<body class="text-center">
+  <main>
+    <div class="container">
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4">
+                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                  <img src="assets/img/logo.png" alt="">
+                </a>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+                  <form class="row g-3 needs-validation" novalidate method="post">
+                    {{ form.hidden_tag() }}
+                    <div class="col-12">
+                      <label for="title" class="form-label">Title</label>
+                      <input type="text" name="title" class="form-control" id="assignmentTitle" required>
+                      <div class="invalid-feedback">Please, enter assignment title!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="Subject" class="form-label">Subject</label>
+                      <input type="text" name="subject" class="form-control" id="subject" required>
+                      <div class="invalid-feedback">Please enter subject name!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="description" class="form-label">Description</label>
+                      <input type="text" name="description" class="form-control" id="description" required>
+                      <div class="invalid-feedback">Please enter description!</div>
+                    </div>
+                    <div class="col-12">
+                      <label for="WordCount" class="form-label">Word count</label>
+                      <input type="number" name="word_count" class="form-control" id="yourPassword" required>
+                      <div class="invalid-feedback">Please enter word count!</div>
+                    </div>
+                    <div class="col-12">
+                      <label for="Pages" class="form-label">Pages</label>
+                      <input type="number" name="pages" class="form-control" id="yourPassword" required>
+                      <div class="invalid-feedback">Please enter number of pages!</div>
+                    </div>
+                    <div class="col-12">
+                      <label for="AssignmentType" class="form-label">Assignment type</label>
+                      <select name="assignment_type" class="form-select" id="yourAssignmentType" required>
+                          <option value="" disabled selected>Select assignment type</option>
+                          <option value="essay">Essay</option>
+                          <option value="academicresearch">Academic Research</option>
+                          <option value="coursework">coursework</option>
+                      </select>
+                      <div class="invalid-feedback">Please select an assignment type!</div>
+                    </div>
+                    <div class="col-12">
+                      <label for="AcademicLevel" class="form-label">Academic level</label>
+                      <select name="academic_level" class="form-select" id="yourAcademiclevel" required>
+                          <option value="" disabled selected>Select academic level</option>
+                          <option value="Undergraduate">Undergraduate</option>
+                          <option value="Masters">Masters</option>
+                          <option value="Phd">PhD</option>
+                      </select>
+                      <div class="invalid-feedback">Please select an academic level!</div>
+                    </div>
+                    </div>
+                    <div class="col-12">
+                      <label for="price" class="form-label">Price</label>
+                      <input type="number" name="price" class="form-control" id="yourPrice" required>
+                      <div class="invalid-feedback">Please enter price!</div>
+                    </div>
+                    <div class="col-12">
+                      <label for="orderid" class="form-label">Order id</label>
+                      <input type="text" name="order_id" class="form-control" id="description" required>
+                      <div class="invalid-feedback">Please enter order id!</div>
+                    </div>
+                    <div class="col-12">
+                      <label for="deadline" class="form-label">Deadline</label>
+                      <input type="datetime-local"  name="deadline" class="form-control" id="deadline" required>    
+                      <div class="invalid-feedback">Please enter deadline date!</div>
+                      
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                        <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                        <div class="invalid-feedback">You must agree before submitting.</div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" type="submit">Post</button>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+
+              <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+</body>
+{% endblock content %}
