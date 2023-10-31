@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title%}
+    Home Page
+{% endblock title %}
+{% block content %}
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-secondary" style="color:white">
+  <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h4 class="display-4 font-weight-normal">Welcome to a team of competent writers and research consultants.</h4>
+      <p class="lead font-weght-normal">To view services we offer, kindly click the link below for more information</p>
+      <a class="btn btn-primary" href="{{ url_for('services_page') }}">Our Services</a>
+  </div>
+  <div class="product-device box-shadow d-none d-md-block"></div>
+  <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+
+  <style>
+    body {
+      background-image: url('static/images/logo.jpg');
+      background-size: cover;
+
+    }
+  </style>
+</div>
+
+{% endblock content %}
