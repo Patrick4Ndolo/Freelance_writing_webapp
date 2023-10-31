@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}
+    Writers Page
+{% endblock %}
+
+{% block content %}
+
+    <div class="row" style="margin-top: 20px; margin-left: 20px;">
+        <div class="col-10">
+            <h4>Available assignments </h4>
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Order_id</th>
+                            <th scope="col">Word_count</th>
+                            <th scope="col">Pages</th>
+                            <th scope="col">Assignment_type</th>
+                            <th scope="col">Academic_level</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Deadline</th>
+                            <th scope="col">Download_file</th>
+                            <th scope="col">Upload_file</th>
+                            <th scope="col">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in assignments %}
+                        {% include 'includes/assignment_modal.html' %}
+                            <tr>
+                                <td>{{ item.id }}</td>
+                                <td>{{ item.subject }}</td>
+                                <td>{{ item.order_id }}</td>
+                                <td>{{ item.word_count }}</td>
+                                <td>{{ item.pages }}</td>
+                                <td>{{ item.assignment_type }}</td>
+                                <td>{{ item.academic_level }}</td>
+                                <td>{{ item.price }}ksh</td>
+                                <td>{{ item.deadline }}</td>
+                                <td>{{ item.Download_file }}</td>
+                                <td>{{ item.Upload_file }}</td>
+                                <td>
+                                    <button class="btn btn-outline btn-info" data-bs-toggle="modal" data-bs-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
+                                    <button class="btn btn-outline btn-success" data-bs-toggle="modal" data-bs-target="#Modal-TakeConfirm-{{ item.id }}">Take order</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+                <style>
+                    body {
+                        background-color: #212121;
+                        color: white;
+                    }
+                </style>
+        </div>
+        <div class="col-3">
+            Owned Assignments
+            <p>Click on decline button to return this order</p>
+        </div>
+    </div>
+{% endblock %}
+
