@@ -1,0 +1,190 @@
+{% extends 'layout.html' %}
+{% block title%}
+    Orders In Review Page
+{% endblock title %}
+{% block content %}
+
+<!-- Sidebar -->
+<div container>
+    <nav id="sidebar" class="sidebar">
+        <div class="p-4"> 
+            <div class="service-title">
+                <box-icon type='solid' name='home-alt-2'></box-icon>
+                <h3 class="text-white">Dashboard</h3>
+            </div>
+            <div class="service-title">
+                <i class='bx bx-home'></i>
+                <a href="{{ url_for('available_orders') }}">Available Orders</a>
+            </div>
+            <div class="service-title">
+                <i class='bx bx-home'></i>
+                <a href="{{ url_for('new_orders') }}" class="no-underline">New Orders</a>
+            </div>
+            <div class="service-title">
+                <a href="{{ url_for('my_bids') }}">My Bids</a>
+            </div>
+            <div class="service-title">
+                <a href="{{ url_for('discarded_orders') }}">Discarded Orders</a>
+            </div>
+            <div class="service-title">
+                <a href="{{ url_for('invites') }}">Invited</a>
+            </div>
+            <div class="service-title">
+                <a href="{{ url_for('orders_in_progress') }}">In Progress</a>
+            </div>
+            <div class="service-title">
+                <a href="{{ url_for('completed_orders') }}">Completed Orders</a>
+            </div>
+            <div class="service-title">
+                <i class='bx box-icon' name='flag'></i>
+                <a href="{{ url_for('orders_in_review') }}">In Review</a>
+            </div>
+            <div class="service-title">
+                <a href="{{ url_for('disputed_orders') }}">Disputed Orders</a>
+            </div>
+            <div class="service-title">
+                <a href="#">Upload assignment</a>
+                
+            </div>
+            <div class="service-title">
+                <a href="{{ url_for('orders_on_revision') }}">Revision</a>
+            </div>
+            
+
+        </div>
+    </nav>
+</div>
+
+
+<!-- Assignment Table Column -->
+<div class="col-10">
+    <h4>Orders In Review</h4>
+        <table class="table table-hover table-white table-bordered" style="margin-left: 300px; width:80%">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Order id</th>
+                    <th scope="col">Word count</th>
+                    <th scope="col">Pages</th>
+                    <th scope="col">Assignment type</th>
+                    <th scope="col">Academic level</th>
+                    <th scope="col">Price (ksh)</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in assignments %}
+                {% include 'includes/assignment_modal.html' %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.subject }}</td>
+                        <td>{{ item.order_id }}</td>
+                        <td>{{ item.word_count }}</td>
+                        <td>{{ item.pages }}</td>
+                        <td>{{ item.assignment_type }}</td>
+                        <td>{{ item.academic_level }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>{{ item.deadline }}</td>
+                        <td>
+                            <a href="{{ url_for('order_detail', assignment_id=item.id) }}" class="btn btn-outline btn-info" data-bs-toggle="modal" data-bs-target="{{ url_for('order_detail', assignment_id=item.id) }}" >More Info</a>
+                            <a href="{{ url_for('order_detail', assignment_id=item.id) }}" class="btn btn-outline btn-success" data-bs-toggle="modal" data-bs-target="#Modal-TakeConfirm-{{ item.id }}">Take order</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    <style>
+        body {
+            background-color: #212121;
+            color: white;
+        }
+    </style>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+        <style>
+          body {
+              background-color: white;
+              background-size: cover;
+          }
+    
+          .service-container {
+              padding: 20px;
+              margin: 20px;
+              background-color: #fff;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          }
+    
+          .service-title {
+              font-size: 24px;
+              font-weight: bold;
+          }
+    
+          .service-description {
+              font-size: 16px;
+    
+          }
+          .no-underline {
+             text-decoration: none;
+             color: inherit; /* Optional: Use the default color of the parent */
+        }
+
+      </style>
+  
+
+                
+        
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+            <style>
+              .body {
+                  background-color: white;
+                  background-size: cover;
+              }
+
+              .sidebar {
+                top: 0;
+                transition: 0.5s;
+                height: 200%;
+                width: 250px;
+                position: fixed;
+                padding: 20px;
+                margin: 0px;
+                background-color: darkslategrey;
+              }
+
+              /* Sidebar links */
+             .sidebar a {
+                padding: 15px;
+                text-decoration: none;
+                font-size: 18px;
+                color: wheat;
+                display: block;
+                transition: 0.3s;
+             }
+
+             /* Sidebar links on hover */
+             .sidebar a:hover {
+                background-color: #495057; /* Set your desired hover background color */
+             }
+        
+              .service-container {
+                  padding: 20px;
+                  margin: 20px;
+                  background-color: #fff;
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+              }
+        
+              .service-title {
+                  font-size: 24px;
+                  font-weight: bold;
+              }
+        
+              .service-description {
+                  font-size: 16px;
+        
+              }
+          </style>    
+{% endblock content %}

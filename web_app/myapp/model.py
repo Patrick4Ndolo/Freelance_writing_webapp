@@ -145,8 +145,8 @@ class Assignment(db.Model, UserMixin):
      
     id = db.Column(db.Integer(), primary_key=True)
     title = db.Column(db.String(30), nullable=False)
-    subject = db.Column(db.String(30), index=True, unique=True, nullable=False)
-    order_id = db.Column(db.Integer, index=True, unique=True, nullable=False)
+    subject = db.Column(db.String(30), index=True, unique=False, nullable=False)
+    order_id = db.Column(db.Integer(), index=True, unique=True, nullable=False)
     pages = db.Column(db.Integer, nullable=False)
     word_count = db.Column(db.Integer, nullable=False)
     assignment_type = db.Column(db.String(30), nullable=False)
@@ -155,8 +155,10 @@ class Assignment(db.Model, UserMixin):
     deadline = db.Column(db.DateTime(), nullable=False, default=datetime.utcnow() + timedelta(days=7))
     upload_file = db.Column(db.LargeBinary(255), nullable=True)
     description = db.Column(db.String(length=1024), nullable=False)
-    owner_id = db.Column(db.Integer(), db.ForeignKey('users.id'))
+    owner_id = db.Column(db.Integer(), db.ForeignKey('users.id'), nullable=True)
+    status = db.Column(db.String(20))
     owner = db.relationship('Writer', back_populates='owned_order', foreign_keys='Assignment.owner_id')
+
 
     def __init__(self, title, subject, order_id, pages, word_count, price , description, deadline, assignment_type, academic_level):
         self.title = title

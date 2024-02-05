@@ -14,7 +14,6 @@
                     <th scope="col">Assignment_type</th>
                     <th scope="col">Academic_level</th>
                     <th scope="col">Date_posted</th>
-                    <th scope="col">Upload_file</th>
                     <th scope="col">Deadline</th>
                     <th scope="col">Options</th>
                 </tr>
@@ -29,10 +28,9 @@
                         <td>{{ item.assignment_type }}</td>
                         <td>{{ item.academic_level }}</td>
                         <td>{{ item.date_posted.strftime('%Y-%m-%d') }}</td>
-                        <td>{{ item.upload_file }}</td>
                         <td>{{ item.deadline }}</td>
                         <td>
-                            <button class="btn btn-outline btn-info" data-bs-toggle="modal" data-bs-target="#Modal-MoreInfo-{{ item.id }}" >More Info</button>
+                            <button class="btn btn-outline btn-info" data-bs-toggle="modal" data-bs-target="{{ url_for('order_detail', assignment_id=item.id) }}" >More Info</button>
                             <button class="btn btn-outline btn-success" data-bs-toggle="modal" data-bs-target="#Modal-UpdateConfirm-{{ item.id }}" >Edit</button>
                             <button class="btn btn-outline btn-danger" data-bs-toggle="modal" data-bs-target="#Modal-DeleteConfirm-{{ item.id }}">Delete</button>
                         </td>

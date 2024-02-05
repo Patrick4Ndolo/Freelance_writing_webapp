@@ -1,0 +1,150 @@
+<style>
+    .modal-content {
+        background-color: #212121;
+    }
+</style>
+
+<div id="mymodal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-body">
+
+              <form action="" method="post">
+
+                <div class="form-group">
+                    <label1>Title:</label1>
+                    <input type="text" class="form-control" name="title" required="1">
+
+                </div>
+                <div class="form-group">
+                    <label1>Subject</label1>
+                    <input type="text" class="form-control" name="subject" required="1">
+
+
+                </div>
+                <div class="form-group">
+                    <label1>Word Count:</label1>
+                    <input type="number" class="form-control" name="word_count" required="1">
+
+                </div>
+                <div class="form-group">
+                    <label1>Pages:</label1>
+                    <input type="number" class="form-control" name="pages" required="1">
+
+                </div>
+                <div class="form-group">
+                    <label1>Assignment type:</label1>
+                    <input type="text" class="form-control" name="assignment_type" required="1">
+
+                </div>
+                <div class="form-group">
+                    <label1>Academic level:</label1>
+                    <input type="text" class="form-control" name="academic_level" required="1">
+
+                </div>
+                <div class="form-group">
+                    <label1>Price:</label1>
+                    <input type="number" class="form-control" name="price" required="1">
+
+                </div>
+                <div class="form-group">
+                    <label1>Deadline:</label1>
+                    <input type="time" class="form-control" name="deadline" required="1">
+
+                </div>
+               
+              </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+          </div>
+
+      </div>
+
+  </div>
+
+</div>
+
+<!-- Modal -->
+  <div class="modal fade" id="Modal-MoreInfo-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ item.title }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{ item.description }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--TakeConfirm-->
+  <div class="modal fade" id="Modal-TakeConfirm-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ item.title }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST">
+            {{ Take_form.hidden_tag() }}
+            <h6 class="text-center">
+                Are you sure you want to take assignment of order number {{ item.order_id }} for {{ item.price }}ksh ?
+            </h6>
+            <br> 
+            <h6 class="text-center">
+              By clicking take order button, the assignment will be assignned to you.
+            </h6>
+            <br>
+            <input id="taken_order" name="taken_order" type="hidden" value="{{item.name}}">
+            {{ Take_form.submit(class="btn btn-outline-success btn-block") }}
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Decline-->
+  <div class="modal fade" id="Modal-modalDecline-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ item.name }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST">
+            {{ Decline_form.hidden_tag() }}
+            <h4 class="text-center">
+                Are you sure you want to edit {{ item.name }}?
+            </h4>
+            <br> 
+            
+            <input id="Decline_item" name="edit_item" type="hidden" value="{{item.name}}">
+            {{ Decline_form.submit(class="btn btn-outline-success btn-block") }}
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,100 @@
+
+<!-- Sidebar -->
+<div container>
+    <nav id="sidebar" class="sidebar">
+        <div class="p-4"> 
+            <div class="service-title">
+                <box-icon type='solid' name='home-alt-2'></box-icon>
+                <h3 class="text-white">Dashboard</h3>
+            </div>
+            <div class="service-title">
+                <i class='bx bx-home'></i>
+                <a href="{{ url_for('available_orders') }}">Available Orders</a>
+            </div>
+            <div class="service-title">
+                <i class='bx bx-home'></i>
+                <a href="{{ url_for('new_orders') }}" class="no-underline">New Orders</a>
+            </div>
+            <div class="service-title">
+                <a href="{{ url_for('my_bids') }}">My Bids</a>
+            </div>
+            <div class="service-title">
+                <a href="{{ url_for('discarded_orders') }}">Discarded Orders</a>
+            </div>
+            <div class="service-title">
+                <a href="{{ url_for('invites') }}">Invited</a>
+            </div>
+            <div class="service-title">
+                <a href="{{ url_for('orders_in_progress') }}">In Progress</a>
+            </div>
+            <div class="service-title">
+                <a href="{{ url_for('completed_orders') }}">Completed Orders</a>
+            </div>
+            <div class="service-title">
+                <i class='bx box-icon' name='flag'></i>
+                <a href="{{ url_for('orders_in_review') }}">In Review</a>
+            </div>
+            <div class="service-title">
+                <a href="{{ url_for('disputed_orders') }}">Disputed Orders</a>
+            </div>
+            <div class="service-title">
+                <a href="#">Upload assignment</a>
+                
+            </div>
+            <div class="service-title">
+                <a href="{{ url_for('orders_in_review') }}">Revision</a>
+            </div>
+            
+
+        </div>
+    </nav>
+</div>
+
+<!-- Assignment Table Column -->
+<div class="col-10">
+    <h4>Available Orders</h4>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Order id</th>
+                    <th scope="col">Word count</th>
+                    <th scope="col">Pages</th>
+                    <th scope="col">Assignment type</th>
+                    <th scope="col">Academic level</th>
+                    <th scope="col">Price (ksh)</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in assignments %}
+                {% include 'includes/assignment_modal.html' %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.subject }}</td>
+                        <td>{{ item.order_id }}</td>
+                        <td>{{ item.word_count }}</td>
+                        <td>{{ item.pages }}</td>
+                        <td>{{ item.assignment_type }}</td>
+                        <td>{{ item.academic_level }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>{{ item.deadline }}</td>
+                        <td>
+                            <a href="{{ url_for('order_detail', assignment_id=item.id) }}" class="btn btn-outline btn-info" data-bs-toggle="modal" data-bs-target="{{ url_for('order_detail', assignment_id=item.id) }}" >More Info</a>
+                            <a href="{{ url_for('order_detail', assignment_id=item.id) }}" class="btn btn-outline btn-success" data-bs-toggle="modal" data-bs-target="#Modal-TakeConfirm-{{ item.id }}">Take order</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    <style>
+        body {
+            background-color: #212121;
+            color: white;
+        }
+    </style>
+</div>
+</div>
