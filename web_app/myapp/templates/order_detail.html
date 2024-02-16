@@ -56,25 +56,29 @@
         </nav>
     </div>
     <!-- Assignment Table Column -->
-    <div container>
-            <!-- Right Section (Vertical Table) -->
-        <div class="col-md-3">
+<div container>
+        <!-- Right Section (Vertical Table) -->
+        <h1>Assignment</h1>
+    <div class="col-md-2">
+        <table class="table table-hover table-white table-bordered" style="margin-left: 300px; width:80%">
+                
             <div style="display: flex; flex-direction: column;">
                 <div>
-                    <h6>Id</h6>
-                    {% for assignment in assignments %}
-                        <p>{{ assignment.id }}</p>
-                    {% endfor %}
-                </div>
-                <div>
+                        <h6>Id</h6>
+                        {% for assignment in assignments %}
+                            <p>{{ assignment.id }}</p>
+                        {% endfor %}
+                    </div>
+                    <div>
                     <h6>Subject</h6>
-                    {% for assignment in assignments %}
-                        <p>{{ assignment.subject }}</p>
-                    {% endfor %}
+                        {% for assignment in assignments %}
+                            <p>{{ assignment.subject }}</p>
+                        {% endfor %}
+                    </div>
+                        <!-- Add similar divs for other properties -->
                 </div>
-                <!-- Add similar divs for other properties -->
-            </div>
-        </div>
+        </table>   
+         
 
     </div>
 </div>
