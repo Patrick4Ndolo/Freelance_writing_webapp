@@ -1,0 +1,41 @@
+<h2>Edit User: {{ user.username }}</h2>
+<form method="POST" action="{{ url_for('edit_user', user_id=user.id) }}">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+        {{ form.username.label(class="form-label") }}
+        {{ form.username(class="form-control", value=form.username.data) }}
+        {% if form.username.errors %}
+        <div class="invalid-feedback">
+            {{ form.username.errors[0] }}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        {{ form.email_address.label(class="form-label") }}
+        {{ form.email_address(class="form-control", value=form.email_address.data) }}
+        {% if form.email_address.errors %}
+        <div class="invalid-feedback">
+            {{ form.email_address.errors[0] }}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        {{ form.role.label(class="form-label") }}
+        {{ form.role(class="form-select", value=form.role.data) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.is_suspended.label(class="form-label") }}
+        {{ form.is_suspended(class="form-check-input", checked=user.is_suspended) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.suspension_until.label(class="form-label") }}
+        {{ form.suspension_until(class="form-control", value=form.suspension_until.data) }}
+    </div>
+
+    {{ form.submit(class="btn btn-primary") }}
+</form>
